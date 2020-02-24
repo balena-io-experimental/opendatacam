@@ -30,13 +30,6 @@ else
   sed -i "s;zz3;$CAM_IP;" config.json
 fi
 
-#if [[ -z $DC_PORT ]]; then
-#  echo 'Port not specified - defaulting to 8080'
-#else
-#  echo 'Port set to '$DC_PORT
-#  sed -i "s;PORT=8080;PORT=$DC_PORT;" package.json
-#fi
-
 sed -i "s;parsedUrl\[0\];'opendatacam';" server/utils/urlHelper.js
 
 # Start the first process
@@ -51,13 +44,13 @@ fi
 sleep 5
 
 # Start the second process
-#npm run start
-#status=$?
-#if [ $status -ne 0 ]; then
-#  echo "Failed to start npm run start: $status"
-#  exit $status
-#fi
-sleep infinity
+npm run start
+status=$?
+if [ $status -ne 0 ]; then
+  echo "Failed to start npm run start: $status"
+  exit $status
+fi
+
 
 # Naive check runs checks once a minute to see if either of the processes exited.
 # This illustrates part of the heavy lifting you need to do if you want to run
