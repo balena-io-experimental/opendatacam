@@ -1,0 +1,15 @@
+version: '2'
+volumes:
+    home-data:
+services:
+  opendatacam:
+    restart: always
+    build: .
+    privileged: true
+    volumes:
+      - 'home-data:/data'
+    ports:
+      - "8080:8080"
+      - "8070:8070"
+      - "8090:8090"
+      - "27017:27017"
