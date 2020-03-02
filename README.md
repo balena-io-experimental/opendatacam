@@ -3,7 +3,7 @@ An implementation of [OpenDataCam](https://github.com/opendatacam/opendatacam) t
 
 This is working but still being improved - more information to follow soon.
 
-##Getting Started
+## Getting Started
 
 [Download the Nvidia SDK Manager](https://developer.nvidia.com/nvidia-sdk-manager) and install it on your development computer. It will only run on Ubuntu 16 or Ubuntu 18 with a minimum of 8GB RAM. Once installed, open the SDK Manager and select your development environment. You only need to download the development files so you do not need to connect your Jetson to your computer and we will not be using this tool to flash the device.
 
