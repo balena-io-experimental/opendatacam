@@ -5,7 +5,7 @@ This is working but still being improved - more information to follow soon.
 
 ## Getting Started
 
-[Download the Nvidia SDK Manager](https://developer.nvidia.com/nvidia-sdk-manager) and install it on your development computer. It will only run on Ubuntu 16 or Ubuntu 18 with a minimum of 8GB RAM. Once installed, open the SDK Manager and select your development environment. You only need to download the development files so you do not need to connect your Jetson to your computer and we will not be using this tool to flash the device.
+[Download the Nvidia SDK Manager](https://developer.nvidia.com/nvidia-sdk-manager) and install it on your development computer. It will only run on Ubuntu 16 or Ubuntu 18 with a minimum of 8GB RAM. Once installed, open the SDK Manager and select your development environment. You only need to download the development files so you do not need to connect your Jetson to your computer and you should not use this tool to flash the device.
 
 Make sure to select “Target Hardware” and click “Continue to step 02.” Once you get to step 02, make sure the “Jetson OS” box and the “Jetson SDK Components” boxes are checked. Take  note of the download folder (or change to one of your choice) so that we can find the downloaded files later. Also be sure to check the “Download now. Install later.” box to let the software know we will not be flashing the device right now. You must also consult and accept the license terms for all the packages you intend to install and use in your Jetson Nano project by checking the “accept” box.
 
