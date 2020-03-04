@@ -19,6 +19,16 @@ If the script completes successfully, it will return `Done copying necessary fil
 
 At this point, you can follow the typical balenaCloud pattern of creating an application, downloading an image, flashing an SD card, inserting it in your Jetson Nano, and then powering it up. Once your Nano is showing up in the dashboard, do a `balena push` from the CLI. The Dockerfile is huge and installs a lot of dependencies, so the build may take a while.
 
-Once the build is complete and the image has downloaded to you nano, you can access OpenDataCam from your browser on port 8080.
+Once the build is complete and the image has downloaded to you nano, you can access OpenDataCam from your browser on port 80.
+
+## Device Variables
+
+You can set the following device variables in the balenaCloud dashboard to modify your OpenDataCam configuration:
+
+**VIDEO_INPUT** - set to `usbcam` for an attached USB camera (default value) or `remote_cam` for an IP camera. If you set to `remote_cam` you need to also set the variable `CAM_IP`.
+
+**CAM_IP** - enter the entire IP/URL of a video stream, for instance `rtsp://192.168.1.168/0`- can be anything supported by OpenCV, such as .m3u8, MJPEG, etc...
+
+**CAM_DEV** - sets the device name for the USB camera to use if `VIDEO_INPUT` is set to `usbcam` - default value is `video0`, in other words the camera device would be `/dev/video0` - you should not enter the `/dev/` part which is assumed.
 
 
