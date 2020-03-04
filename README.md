@@ -19,7 +19,8 @@ If the script completes successfully, it will return `Done copying necessary fil
 
 At this point, you can follow the typical balenaCloud pattern of creating an application, downloading an image, flashing an SD card, inserting it in your Jetson Nano, and then powering it up. Once your Nano is showing up in the dashboard, do a `balena push` from the CLI. The Dockerfile is huge and installs a lot of dependencies, so the build may take a while.
 
-Once the build is complete and the image has downloaded to you nano, you can access OpenDataCam from your browser on port 80.
+Once the build is complete and the image has downloaded to your device, you can access OpenDataCam from your browser using the IP of your nano. For instance: http://192.168.1.67 (it is currently set to use port 80)
+
 
 ## Device Variables
 
