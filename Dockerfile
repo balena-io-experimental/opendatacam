@@ -2,6 +2,7 @@ FROM balenalib/jetson-nano-ubuntu:bionic
 
 WORKDIR /usr/src/app
 
+# Rename the four files below to match the ones you downloaded from the SDK (if they are different)
 COPY ./cuda-repo-l4t-10-0-local-10.0.326_1.0-1_arm64.deb .
 COPY ./libcudnn7_7.6.3.28-1+cuda10.0_arm64.deb .
 COPY ./libcudnn7-dev_7.6.3.28-1+cuda10.0_arm64.deb .
