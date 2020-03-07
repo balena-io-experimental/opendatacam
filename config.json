@@ -4,7 +4,7 @@
   "VIDEO_INPUT": "zz1",
   "NEURAL_NETWORK": "yolov3-tiny",
   "VIDEO_INPUTS_PARAMS": {
-    "file": "data/demo.mp4",
+    "file": "zz4",
     "usbcam": "v4l2src device=/dev/zz2 ! video/x-raw, framerate=30/1, width=640, height=360 ! videoconvert ! appsink",
     "usbcam_no_gstreamer": "-c 0",
     "experimental_raspberrycam_docker": "v4l2src device=/dev/video2 ! video/x-raw, framerate=30/1, width=640, height=360 ! videoconvert ! appsink",
