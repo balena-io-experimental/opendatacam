@@ -30,6 +30,14 @@ else
   sed -i "s;zz3;$CAM_IP;" config.json
 fi
 
+if [[ -z $VIDEO_FILE ]]; then
+  echo 'Video file not specified - defaulting to /data/demo.mp4'
+  sed -i 's|zz4|\/data\/demo.mp4|' config.json
+else
+  echo 'Video file set to '$VIDEO_FILE
+  sed -i "s;zz4;$VIDEO_FILE;" config.json
+fi
+
 sed -i "s;parsedUrl\[0\];'opendatacam';" server/utils/urlHelper.js
 
 # Start the first process
