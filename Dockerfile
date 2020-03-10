@@ -117,8 +117,6 @@ EXPOSE 8080 8070 8090
 
 COPY config.json .
 
-# # Because we want to run mongodb and the node.js app
-# # See https://docs.docker.com/config/containers/multi-service_container/
 COPY launch.sh launch.sh
 RUN chmod 777 launch.sh
 CMD ["./launch.sh"]
