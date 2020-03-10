@@ -7,9 +7,15 @@ services:
     build: .
     privileged: true
     volumes:
-      - 'home-data:/data'
+      - 'home-data:/data/db'
     ports:
       - "80:8080"
       - "8070:8070"
       - "8090:8090"
+  mongo:
+    image: mongo
+    restart: always
+    ports:
       - "27017:27017"
+    volumes:
+      - 'home-data:/data/db'
