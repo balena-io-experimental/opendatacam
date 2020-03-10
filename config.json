@@ -69,5 +69,5 @@
       "canvasResolutionFactor": 0.1
     }
   },
-  "MONGODB_URL": "mongodb://127.0.0.1:27017"
+  "MONGODB_URL": "mongodb://mongo:27017"
 }
