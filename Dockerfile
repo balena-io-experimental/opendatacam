@@ -113,21 +113,12 @@ WORKDIR /opendatacam
 RUN npm install
 RUN npm run build
 
-# Install Mongodb
-# NB: for some reason this needs to be at the end otherwise mongod command isn't installed
-# https://github.com/dockerfile/mongodb#run-mongod-w-persistentshared-directory
-# ENV DEBIAN_FRONTEND noninteractive
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4 && \
-    echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.0.list
-RUN apt-get update && apt-get install -y openssl libcurl3 mongodb-org
-VOLUME ["/data/db"]
-
-EXPOSE 8080 8070 8090 27017
+EXPOSE 8080 8070 8090
 
 COPY config.json .
 
 # # Because we want to run mongodb and the node.js app
 # # See https://docs.docker.com/config/containers/multi-service_container/
-COPY docker-start-mongo-and-opendatacam.sh docker-start-mongo-and-opendatacam.sh
-RUN chmod 777 docker-start-mongo-and-opendatacam.sh
-CMD ["./docker-start-mongo-and-opendatacam.sh"]
+COPY launch.sh launch.sh
+RUN chmod 777 launch.sh
+CMD ["./launch.sh"]
