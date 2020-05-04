@@ -5,7 +5,7 @@ This is working but still being improved - more information to follow soon.
 
 ## Getting Started
 
-This project now uses our experimental [jetson-nano-cuda-cudnn-opencv](https://hub.docker.com/repository/docker/resinplayground/jetson-nano-cuda-cudnn-opencv) image, so you no longer need to download the NVIDIA SDK Manager. In fact, you can now deploy directly to your device using the button below! Simply download the image and flash it to your SD card using Etcher.
+This project now uses our experimental [jetson-nano-cuda-cudnn-opencv](https://hub.docker.com/repository/docker/resinplayground/jetson-nano-cuda-cudnn-opencv) image, so you no longer need to download the NVIDIA SDK Manager. In fact, you can now deploy directly to your device using the button below! Simply download the image and flash it to your SD card using [Etcher](https://www.balena.io/etcher/).
 
 [![](https://www.balena.io/deploy.png)](https://dashboard.balena-cloud.com/deploy)
 
