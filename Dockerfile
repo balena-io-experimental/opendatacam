@@ -18,12 +18,12 @@ COPY ./Makefile ./
 RUN     make
 
 #get weights
-RUN wget https://pjreddie.com/media/files/yolov3-tiny.weights >/dev/null 2>&1
+RUN wget https://pjreddie.com/media/files/yolov3-tiny.weights > /dev/null 2>&1
 
 # Since we are building for Jetson Nano, we won't copy over these weights to save space.
 # If you are on a more powerful device, add them back in	
-#wget https://pjreddie.com/media/files/yolo-voc.weights >/dev/null 2>&1 && \
-#wget https://pjreddie.com/media/files/yolov3.weights >/dev/null 2>&1
+#wget https://pjreddie.com/media/files/yolo-voc.weights > /dev/null 2>&1 && \
+#wget https://pjreddie.com/media/files/yolov3.weights > /dev/null 2>&1
 
 # Install node.js
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
