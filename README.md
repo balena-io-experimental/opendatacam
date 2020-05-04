@@ -5,9 +5,9 @@ This is working but still being improved - more information to follow soon.
 
 ## Getting Started
 
-This project now uses our experimental [jetson-nano-cuda-cudnn-opencv](https://hub.docker.com/repository/docker/resinplayground/jetson-nano-cuda-cudnn-opencv) image, so you no longer need to download the NVIDIA SDK Manager. Simply use this repo as you would with any balena application.
+This project now uses our experimental [jetson-nano-cuda-cudnn-opencv](https://hub.docker.com/repository/docker/resinplayground/jetson-nano-cuda-cudnn-opencv) image, so you no longer need to download the NVIDIA SDK Manager. In fact, you can now deploy directly to your device using the button below! Simply download the image and flash it to your SD card using Etcher.
 
-You can follow the typical balenaCloud pattern of creating an application, downloading an image, flashing an SD card, inserting it in your Jetson Nano, and then powering it up. Once your Nano is showing up in the dashboard, do a `balena push` from the CLI. The Dockerfile is large and installs a lot of dependencies, so the build may take a while.
+[![](https://www.balena.io/deploy.png)](https://dashboard.balena-cloud.com/deploy)
 
 Once the build is complete and the image has downloaded to your device, you can access OpenDataCam from your browser using the IP of your nano. For instance: http://192.168.1.67 (it is currently set to use port 80, but you can change that with a device variable, see below.)
 
