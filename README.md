@@ -5,7 +5,7 @@ This is working but still being improved - more information to follow soon.
 
 ## Getting Started
 
-This project now uses our experimental [jetson-nano-cuda-cudnn-opencv](https://hub.docker.com/repository/docker/resinplayground/jetson-nano-cuda-cudnn-opencv) image, so you no longer need to download the NVIDIA SDK Manager. You can use the deploy button below to create and build the application in your [balenaCloud](https://www.balena.io/cloud/) account. (balenaCloud allows you to remotely monitor, update and manage your device. Your first 10 devices are free!)
+This project now uses our experimental [jetson-nano-cuda-cudnn-opencv](https://hub.docker.com/repository/docker/resinplayground/jetson-nano-cuda-cudnn-opencv) image, so you no longer need to download the NVIDIA SDK Manager. You can use the deploy button below to create and build the application in your [balenaCloud](https://www.balena.io/cloud/) account. (balenaCloud allows you to remotely monitor, update and manage your device. You can add your first 10 devices for free!)
 
 [![](https://www.balena.io/deploy.png)](https://dashboard.balena-cloud.com/deploy)
 
