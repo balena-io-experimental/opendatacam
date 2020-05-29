@@ -1,5 +1,5 @@
 # OpenDataCam
-An implementation of [OpenDataCam 2.0.1](https://github.com/opendatacam/opendatacam) that is fully containerized and runs on balena + Jetson Nano.
+An implementation of [OpenDataCam 3.0.0-beta.2](https://github.com/opendatacam/opendatacam) that is fully containerized and runs on balena + Jetson Nano.
 
 A more detailed tutorial will be available soon.
 
@@ -11,12 +11,12 @@ This project now uses our experimental [jetson-nano-cuda-cudnn-opencv](https://h
 
 Be sure to select "Nvidia Jetson Nano" as the device type. click "add device" to download the image and burn it to an SD card using [Etcher](https://www.balena.io/etcher/). Alternatively, you can use the balena CLI to push this code to your application.
 
-Once the build is complete and the image has downloaded to your device, you can access OpenDataCam from your browser using the IP of your Nano. For instance: http://192.168.1.67 (it is currently set to use port 80, but you can change that with a device variable, see below.)
+Once the build is complete and the image has downloaded to your device, you can access OpenDataCam from your browser using the IP of your Nano. For instance: http://192.168.1.67:8080 (it is currently set to use port 8080, but you can change that with a device variable, see below.)
 
 
 ## Device Variables
 
-You can set the following device variables in the balenaCloud dashboard to modify your OpenDataCam configuration:
+You can set the device variables below in the balenaCloud dashboard to modify your OpenDataCam configuration. Setting a variable value will modify your OpenDataCam config.json file. If you have custom settings in your config.json file, don't add any device variables. Instead, edit your config.json locally on your development computer and re-push the application to balenaCloud. (Deltas and caching will ensure that only the config.json (or other changed files) will be pushed, not the entire application.)
 
 **VIDEO_INPUT** - set to `usbcam` for an attached USB camera (default value) or `remote_cam` for an IP camera. If you set to `remote_cam` you need to also set the variable `CAM_IP`. The value `file` is also valid, in which case you also need to set the variable `VIDEO_FILE`.
 
