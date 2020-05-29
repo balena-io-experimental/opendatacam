@@ -18,7 +18,7 @@ Once the build is complete and the image has downloaded to your device, you can 
 
 You can set the following device variables in the balenaCloud dashboard to modify your OpenDataCam configuration:
 
-**VIDEO_INPUT** - set to `usbcam` for an attached USB camera (default value) or `remote_cam` for an IP camera. If you set to `remote_cam` you need to also set the variable `CAM_IP`. The value `file` is also valid, in which case you also need to set the variable `VIDEO_FILE`.
+**VIDEO_INPUT** - set to `usbcam` for an attached USB camera (default value) or `remote_cam` for an IP camera. If you set to `remote_cam` you need to also set the variable `CAM_IP`. The value `file` is also valid, in which case you also need to set the variable `VIDEO_FILE`. (Note that `raspberrycam` is not supported currently)
 
 **CAM_IP** - enter the entire IP/URL of a video stream, for instance `rtsp://192.168.1.168/0`- can be anything supported by OpenCV, such as .m3u8, MJPEG, etc...
 
