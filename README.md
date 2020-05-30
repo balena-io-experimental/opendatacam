@@ -16,13 +16,13 @@ Once the build is complete and the image has downloaded to your device, you can 
 
 ## Device Variables
 
-You can set the device variables below in the balenaCloud dashboard to modify your OpenDataCam configuration. Setting a variable value will modify your OpenDataCam config.json file. If you have custom settings in your config.json file, don't add any device variables. Instead, edit your config.json locally on your development computer and re-push the application to balenaCloud. (Deltas and caching will ensure that only the config.json (or other changed files) will be pushed, not the entire application.)
+You can set the device variables below in the balenaCloud dashboard to modify your OpenDataCam configuration. Setting a variable value will modify your OpenDataCam config.json file each time your container starts, before OpenDataCam loads. If you don't set any variables, it will not modify the config.json file. If you delete a variable in the dashboard, that setting will revert back to its value in the original config.json file.
 
-**VIDEO_INPUT** - set to `usbcam` for an attached USB camera (default value) or `remote_cam` for an IP camera. If you set to `remote_cam` you need to also set the variable `CAM_IP`. The value `file` is also valid, in which case you also need to set the variable `VIDEO_FILE`.
+**VIDEO_INPUT** - set to `usbcam` for an attached USB camera (default value) or `remote_cam` for an IP camera. If you set to `remote_cam` you need to also set the variable `INPUT_REMOTE_CAM`. The value `file` is also valid, in which case you also need to set the variable `VIDEO_FILE`. (Note that this setup currently does not support `raspberrycam`.)
 
-**CAM_IP** - enter the entire IP/URL of a video stream, for instance `rtsp://192.168.1.168/0`- can be anything supported by OpenCV, such as .m3u8, MJPEG, etc...
+**INPUT_REMOTE_CAM** - enter the entire IP/URL of a video stream, for instance `rtsp://192.168.1.168/0`- can be anything supported by OpenCV, such as .m3u8, MJPEG, etc...
 
-**CAM_DEV** - sets the device name for the USB camera to use if `VIDEO_INPUT` is set to `usbcam` - default value is `video0`, in other words the camera device would be `/dev/video0` - you should not enter the `/dev/` part which is assumed.
+**INPUT_USBCAM** - set the full value of the `VIDEO_INPUT_PARAMS for the `usbcam` element. Default value for a typical usb camera is `"v4l2src device=/dev/video0 ! video/x-raw, framerate=30/1, width=640, height=360 ! videoconvert ! appsink"` - mainly used to change the device name if it's not `/dev/video0`.
 
 **VIDEO_FILE** - set the full path and filename of a video file to use as the input when the value of `VIDEO_INPUT` is set to `file`.
 
