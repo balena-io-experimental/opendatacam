@@ -11,7 +11,7 @@ This project now uses our experimental [jetson-nano-cuda-cudnn-opencv](https://h
 
 Be sure to select "Nvidia Jetson Nano" as the device type. click "add device" to download the image and burn it to an SD card using [Etcher](https://www.balena.io/etcher/). Alternatively, you can use the balena CLI to push this code to your application.
 
-Once the build is complete and the image has downloaded to your device, you can access OpenDataCam from your browser using the IP of your Nano. For instance: http://192.168.1.67:8080 (it is currently set to use port 8080, but you can change that with a device variable, see below.)
+Once the build is complete and the image has downloaded to your device, you can access OpenDataCam from your browser using the IP of your Nano. For instance: http://192.168.1.67:8080 (The web interface is on port 8080)
 
 
 ## Device Variables
