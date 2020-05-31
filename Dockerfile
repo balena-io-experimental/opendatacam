@@ -4,7 +4,7 @@ FROM resinplayground/jetson-nano-cuda-cudnn-opencv:v0.2-slim
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update && apt-get install -y git wget
+RUN apt-get update && apt-get install -y jq wget
 
 # Start Darknet Install
 
