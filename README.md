@@ -1,5 +1,5 @@
 # OpenDataCam
-An implementation of [OpenDataCam 3.0.0-beta.2](https://github.com/opendatacam/opendatacam) that is fully containerized and runs on balena + Jetson Nano.
+An implementation of [OpenDataCam 3.0.0-beta.3](https://github.com/opendatacam/opendatacam) that is fully containerized and runs on balena + Jetson Nano.
 
 A more detailed tutorial will be available soon.
 
