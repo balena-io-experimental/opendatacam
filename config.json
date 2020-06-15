@@ -1,5 +1,5 @@
 {
-  "OPENDATACAM_VERSION": "3.0.0-beta.2",
+  "OPENDATACAM_VERSION": "3.0.0-beta.3",
   "PATH_TO_YOLO_DARKNET" : "/darknet",
   "VIDEO_INPUT": "usbcam",
   "NEURAL_NETWORK": "yolov3-tiny",
@@ -11,16 +11,19 @@
     "remote_hls_gstreamer": "souphttpsrc location=http://YOUR_HLSSTREAM_URL_HERE.m3u8 ! hlsdemux ! decodebin ! videoconvert ! videoscale ! appsink"
   },
   "TRACKER_SETTINGS": {
-    "confidence_threshold": 0.2
+    "objectMaxAreaInPercentageOfFrame": 80,
+    "confidence_threshold": 0.2,
+    "iouLimit": 0.05,
+    "unMatchedFrameTolerance": 5
   },
   "VALID_CLASSES": ["*"],
   "DISPLAY_CLASSES": [
-    { "class": "bicycle", "icon": "1F6B2.svg"},
-    { "class": "person", "icon": "1F6B6.svg"},
-    { "class": "truck", "icon": "1F69B.svg"},
-    { "class": "motorbike", "icon": "1F6F5.svg"},
-    { "class": "car", "icon": "1F697.svg"},
-    { "class": "bus", "icon": "1F68C.svg"}
+    { "class": "bicycle", "hexcode": "1F6B2"},
+    { "class": "person", "hexcode": "1F6B6"},
+    { "class": "truck", "hexcode": "1F69B"},
+    { "class": "motorbike", "hexcode": "1F6F5"},
+    { "class": "car", "hexcode": "1F697"},
+    { "class": "bus", "hexcode": "1F68C"}
   ],
   "PATHFINDER_COLORS": [
     "#1f77b4",
