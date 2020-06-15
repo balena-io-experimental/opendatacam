@@ -13,7 +13,7 @@ WORKDIR /
 RUN git clone --depth 1 -b odc https://github.com/opendatacam/darknet
 
 WORKDIR /darknet
-COPY ./Makefile ./
+COPY ./Makefile.jetson-nano ./Makefile
 
 RUN     make
 
