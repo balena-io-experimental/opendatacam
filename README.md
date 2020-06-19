@@ -5,11 +5,11 @@ A more detailed tutorial will be available soon.
 
 ## Getting Started
 
-This project now uses our experimental [jetson-nano-cuda-cudnn-opencv](https://hub.docker.com/repository/docker/resinplayground/jetson-nano-cuda-cudnn-opencv) image, so you no longer need to download the NVIDIA SDK Manager. You can use the deploy button below to create and build the application in your [balenaCloud](https://www.balena.io/cloud/) account. (balenaCloud allows you to remotely monitor, update and manage your device. You can add your first 10 devices for free!) - NOTE: The delpoy button is still tied to version 2.0.1 until this branch is merged. To use version 3.0.0 you'll need to download this code and [deploy manually](https://www.balena.io/docs/learn/deploy/deployment/).
+This project now uses our experimental [jetson-nano-cuda-cudnn-opencv](https://hub.docker.com/repository/docker/resinplayground/jetson-nano-cuda-cudnn-opencv) image, so you no longer need to download the NVIDIA SDK Manager. You can use the deploy button below to create and build the application in your [balenaCloud](https://www.balena.io/cloud/) account. (balenaCloud allows you to remotely monitor, update and manage your device. You can add your first 10 devices for free!)
 
 [![](https://www.balena.io/deploy.png)](https://dashboard.balena-cloud.com/deploy)
 
-Be sure to select "Nvidia Jetson Nano" as the device type. click "add device" to download the image and burn it to an SD card using [Etcher](https://www.balena.io/etcher/). Alternatively, you can use the balena CLI to push this code to your application.
+Be sure to select "Nvidia Jetson Nano" (or another Jetson device) as the device type. click "add device" to download the image and burn it to an SD card using [Etcher](https://www.balena.io/etcher/). Alternatively, you can use the balena CLI to push this code to your application.
 
 Once the build is complete and the image has downloaded to your device, you can access OpenDataCam from your browser using the IP of your Nano. For instance: http://192.168.1.67:8080 (The web interface is on port 8080)
 
