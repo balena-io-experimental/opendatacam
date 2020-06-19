@@ -1,24 +1,29 @@
 {
-  "OPENDATACAM_VERSION": "2.1.0",
-  "PATH_TO_YOLO_DARKNET" : "/darknet/darknet",
-  "VIDEO_INPUT": "zz1",
+  "OPENDATACAM_VERSION": "3.0.0-beta.3",
+  "PATH_TO_YOLO_DARKNET" : "/darknet",
+  "VIDEO_INPUT": "usbcam",
   "NEURAL_NETWORK": "yolov3-tiny",
   "VIDEO_INPUTS_PARAMS": {
-    "file": "zz4",
-    "usbcam": "v4l2src device=/dev/zz2 ! video/x-raw, framerate=30/1, width=640, height=360 ! videoconvert ! appsink",
-    "usbcam_no_gstreamer": "-c 0",
-    "experimental_raspberrycam_docker": "v4l2src device=/dev/video2 ! video/x-raw, framerate=30/1, width=640, height=360 ! videoconvert ! appsink",
-    "raspberrycam_no_docker": "nvarguscamerasrc ! video/x-raw(memory:NVMM),width=1280, height=720, framerate=30/1, format=NV12 ! nvvidconv ! video/x-raw, format=BGRx, width=640, height=360 ! videoconvert ! video/x-raw, format=BGR ! appsink",
-    "remote_cam": "zz3"
+    "file": "opendatacam_videos/demo.mp4",
+    "usbcam": "v4l2src device=/dev/video0 ! video/x-raw, framerate=30/1, width=640, height=360 ! videoconvert ! appsink",
+    "raspberrycam": "nvarguscamerasrc ! video/x-raw(memory:NVMM),width=1280, height=720, framerate=30/1, format=NV12 ! nvvidconv ! video/x-raw, format=BGRx, width=640, height=360 ! videoconvert ! video/x-raw, format=BGR ! appsink",
+    "remote_cam": "YOUR IP CAM STREAM (can be .m3u8, MJPEG ...), anything supported by opencv",
+    "remote_hls_gstreamer": "souphttpsrc location=http://YOUR_HLSSTREAM_URL_HERE.m3u8 ! hlsdemux ! decodebin ! videoconvert ! videoscale ! appsink"
+  },
+  "TRACKER_SETTINGS": {
+    "objectMaxAreaInPercentageOfFrame": 80,
+    "confidence_threshold": 0.2,
+    "iouLimit": 0.05,
+    "unMatchedFrameTolerance": 5
   },
   "VALID_CLASSES": ["*"],
   "DISPLAY_CLASSES": [
-    { "class": "bicycle", "icon": "1F6B2.svg"},
-    { "class": "person", "icon": "1F6B6.svg"},
-    { "class": "truck", "icon": "1F69B.svg"},
-    { "class": "motorbike", "icon": "1F6F5.svg"},
-    { "class": "car", "icon": "1F697.svg"},
-    { "class": "bus", "icon": "1F68C.svg"}
+    { "class": "bicycle", "hexcode": "1F6B2"},
+    { "class": "person", "hexcode": "1F6B6"},
+    { "class": "truck", "hexcode": "1F69B"},
+    { "class": "motorbike", "hexcode": "1F6F5"},
+    { "class": "car", "hexcode": "1F697"},
+    { "class": "bus", "hexcode": "1F68C"}
   ],
   "PATHFINDER_COLORS": [
     "#1f77b4",
@@ -40,10 +45,20 @@
     "red": "#AB4435"
   },
   "NEURAL_NETWORK_PARAMS": {
+    "yolov4": {
+      "data": "cfg/coco.data",
+      "cfg": "cfg/yolov4-416x416.cfg",
+      "weights": "yolov4.weights"
+    },
     "yolov3": {
       "data": "cfg/coco.data",
       "cfg": "cfg/yolov3.cfg",
       "weights": "yolov3.weights"
+    },
+    "yolov3-tiny-prn": {
+      "data": "cfg/coco.data",
+      "cfg": "cfg/yolov3-tiny-prn.cfg",
+      "weights": "yolov3-tiny-prn.weights"
     },
     "yolov3-tiny": {
       "data": "cfg/coco.data",
@@ -69,5 +84,10 @@
       "canvasResolutionFactor": 0.1
     }
   },
-  "MONGODB_URL": "mongodb://mongo:27017"
+  "MONGODB_URL": "mongodb://mongo:27017",
+  "PORTS": {
+    "app": 8080,
+    "darknet_json_stream": 8070,
+    "darknet_mjpeg_stream": 8090
+  }
 }

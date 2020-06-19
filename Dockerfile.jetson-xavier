@@ -1,0 +1,40 @@
+FROM resinplayground/jetson-nano-cuda-cudnn-opencv:v0.2-slim
+
+#OpenDataCam 3.0.0-beta.3
+
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get update && apt-get install -y jq wget
+
+# Start Darknet Install
+
+WORKDIR /
+
+RUN git clone --depth 1 -b odc https://github.com/opendatacam/darknet
+
+WORKDIR /darknet
+COPY ./Makefile.jetson-xavier ./Makefile
+
+RUN     make
+
+#get weights
+RUN wget https://pjreddie.com/media/files/yolov3.weights > /dev/null 2>&1
+
+# Install node.js
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
+    apt-get install -y nodejs
+
+RUN git clone --depth 1 -b development https://github.com/opendatacam/opendatacam /var/local/opendatacam
+
+WORKDIR /var/local/opendatacam
+
+RUN npm install
+RUN npm run build
+
+EXPOSE 8080 8070 8090
+
+COPY config.json config.bak
+
+COPY launch.sh launch.sh
+RUN chmod 777 launch.sh
+CMD ["./launch.sh"]
