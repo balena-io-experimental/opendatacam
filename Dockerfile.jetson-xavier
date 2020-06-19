@@ -33,7 +33,7 @@ RUN npm run build
 
 EXPOSE 8080 8070 8090
 
-COPY config.json .
+COPY config.json config.bak
 
 COPY launch.sh launch.sh
 RUN chmod 777 launch.sh

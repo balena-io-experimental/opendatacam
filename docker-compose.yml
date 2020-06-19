@@ -1,13 +1,15 @@
 version: '2'
 volumes:
-    home-data:
+    db-data:
+    config-data:
 services:
   opendatacam:
     restart: always
     build: .
     privileged: true
     volumes:
-      - 'home-data:/data/db'
+      - 'db-data:/data/db'
+      - 'config-data:/data/odc'
     ports:
       - "8080:8080"
       - "8070:8070"
@@ -18,4 +20,4 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - 'home-data:/data/db'
+      - 'db-data:/data/db'
