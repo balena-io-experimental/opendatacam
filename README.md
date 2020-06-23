@@ -14,9 +14,11 @@ Be sure to select "Nvidia Jetson Nano" (or another Jetson device) as the device 
 Once the build is complete and the image has downloaded to your device, you can access OpenDataCam from your browser using the IP of your Nano. For instance: http://192.168.1.67:8080 (The web interface is on port 8080)
 
 
-## Device Variables
+## Configuring OpenDataCam
 
-You can set the device variables below in the balenaCloud dashboard to modify your OpenDataCam configuration. Setting a variable value will modify your OpenDataCam config.json file each time your container starts, before OpenDataCam loads. If you don't set any variables, it will not modify the config.json file. If you delete a variable in the dashboard, that setting will revert back to its value in the config.json file.
+Opendatacam is configured via the /var/local/opendatacam/config.json file. It is a symlink to /data/odc/config.json which is located on a persistent volume. Any changes to the file will be saved even if the container restarts. You can see all of the customizations available on [this page](https://github.com/opendatacam/opendatacam/blob/master/documentation/CONFIG.md).
+
+You can set the device variables below in the balenaCloud dashboard which will modify your OpenDataCam config.json file. 
 
 
 **VIDEO_INPUT** - set to `usbcam` for an attached USB camera (default value) or `remote_cam` for an IP camera. If you set to `remote_cam` you need to also set the variable `INPUT_REMOTE_CAM`. The value `file` is also valid, in which case you also need to set the variable `VIDEO_FILE`. (Note that this setup currently does not support `raspberrycam`.)
