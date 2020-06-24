@@ -1,11 +1,11 @@
 # OpenDataCam
-An implementation of [OpenDataCam 3.0.0-beta.3](https://github.com/opendatacam/opendatacam) that is fully containerized and runs on balena + Jetson Nano.
+An implementation of [OpenDataCam 3.0.0](https://github.com/opendatacam/opendatacam) that is fully containerized and runs on balena + Jetson Nano. This project uses our experimental [jetson-nano-cuda-cudnn-opencv](https://hub.docker.com/repository/docker/resinplayground/jetson-nano-cuda-cudnn-opencv) image, so you do not need to download the NVIDIA SDK Manager or install the JetPack.
 
 A more detailed tutorial will be available soon.
 
 ## Getting Started
 
-This project now uses our experimental [jetson-nano-cuda-cudnn-opencv](https://hub.docker.com/repository/docker/resinplayground/jetson-nano-cuda-cudnn-opencv) image, so you no longer need to download the NVIDIA SDK Manager. You can use the deploy button below to create and build the application in your [balenaCloud](https://www.balena.io/cloud/) account. (balenaCloud allows you to remotely monitor, update and manage your device. You can add your first 10 devices for free!)
+You can use the deploy button below to create and build the application in your [balenaCloud](https://www.balena.io/cloud/) account. (balenaCloud allows you to remotely monitor, update and manage your device. You can add your first 10 devices for free!)
 
 [![](https://www.balena.io/deploy.png)](https://dashboard.balena-cloud.com/deploy)
 
