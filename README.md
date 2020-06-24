@@ -29,3 +29,5 @@ You can set the device variables below in the balenaCloud dashboard which will m
 
 **VIDEO_FILE** - set the full path and filename of a video file to use as the input when the value of `VIDEO_INPUT` is set to `file`.
 
+**FAN_SPEED** - set to a value between 0 - 255 to control the speed of a compatible PWM fan, if attached. 0 (the default value) is stopped and 255 is the fastest speed. Unlike the other variables above, this one is not part of the config.json file.
+
