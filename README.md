@@ -1,7 +1,7 @@
 # OpenDataCam
 An implementation of [OpenDataCam 3.0.0](https://github.com/opendatacam/opendatacam) that is fully containerized and runs on balena + Jetson Nano. This project uses our experimental [jetson-nano-cuda-cudnn-opencv](https://hub.docker.com/repository/docker/resinplayground/jetson-nano-cuda-cudnn-opencv) image, so you do not need to download the NVIDIA SDK Manager or install the JetPack.
 
-A more detailed tutorial will be available soon.
+A more detailed tutorial is available [here](https://www.balena.io/blog/using-opendatacam-and-balena-to-quantify-the-world-with-ai/).
 
 ## Getting Started
 
