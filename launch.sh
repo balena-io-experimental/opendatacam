@@ -11,7 +11,7 @@ fi
 # Copy config.json to persistent folder on first run
 CONFIG=/data/odc/config.json
 if test -f "$CONFIG"; then
-  echo "config file exists in persistent volume."
+  echo "Config file exists in persistent volume."
 else
   echo "Moving default config file to persistent volume."
   cp /var/local/opendatacam/config.bak $CONFIG
