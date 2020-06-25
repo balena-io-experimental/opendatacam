@@ -24,7 +24,7 @@ RUN wget https://pjreddie.com/media/files/yolov3.weights > /dev/null 2>&1
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
     apt-get install -y nodejs
 
-RUN git clone --depth 1 -b development https://github.com/opendatacam/opendatacam /var/local/opendatacam
+RUN git clone --depth 1 -b v3.0.0 https://github.com/opendatacam/opendatacam /var/local/opendatacam
 
 WORKDIR /var/local/opendatacam
 
@@ -33,7 +33,7 @@ RUN npm run build
 
 EXPOSE 8080 8070 8090
 
-COPY config.json config.bak
+COPY config.jetson-xavier config.bak
 
 COPY launch.sh launch.sh
 RUN chmod 777 launch.sh
