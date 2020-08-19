@@ -30,7 +30,8 @@ ENV LAPACK=/usr/lib/aarch64-linux-gnu/lapack/liblapack.so
 # Get drivers and install
 RUN \
   wget https://developer.nvidia.com/embedded/L4T/r32_Release_v4.3/t210ref_release_aarch64/Tegra210_Linux_R32.4.3_aarch64.tbz2 && \
-  tar xjf Linux_for_Tegra/nv_tegra/nvidia_drivers.tbz2 -C && \
+  tar xjf Tegra210_Linux_R32.4.3_aarch64.tbz2 && \
+  tar xjf Linux_for_Tegra/nv_tegra/nvidia_drivers.tbz2 -C / && \
   tar xjf Linux_for_Tegra/nv_tegra/config.tbz2 -C / --exclude=etc/hosts --exclude=etc/hostname && \
   echo "/usr/lib/aarch64-linux-gnu/tegra" > /etc/ld.so.conf.d/nvidia-tegra.conf && \
   echo "/usr/local/cuda-10.0/targets/aarch64-linux/lib" > /etc/ld.so.conf.d/cuda-10-0.conf && \
@@ -60,8 +61,9 @@ RUN \
 WORKDIR /
 
 RUN \
-  git clone --depth 1 -b odc https://github.com/opendatacam/darknet && \
-  cd darknet
+  git clone --depth 1 -b odc https://github.com/opendatacam/darknet
+
+WORKDIR /darknet
   
 COPY ./Makefile.jetson-nano ./Makefile
 
@@ -76,11 +78,16 @@ RUN \
   curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
   apt-get install -y nodejs
 
+
 RUN \
-  git clone --depth 1 https://github.com/opendatacam/opendatacam.git /var/local/opendatacam && \
-  cd /var/local/opendatacam && \
+  git clone --depth 1 https://github.com/opendatacam/opendatacam.git  /var/local/opendatacam
+
+WORKDIR /var/local/opendatacam
+
+RUN \
   npm install && \
-  npm run build
+  npm run build && \
+  rm -rf /usr/src/app/Linux_for_Tegra
 
 EXPOSE 8080 8070 8090
 
