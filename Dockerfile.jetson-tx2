@@ -57,7 +57,7 @@ RUN make && ldconfig
 RUN wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_pre/yolov4-tiny.weights --no-check-certificate > /dev/null 2>&1
 
 # Download and install OpenDataCam
-# first install node.js
+#  first install node.js
 RUN \
   curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
   apt-get install -y nodejs
