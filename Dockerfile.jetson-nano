@@ -21,14 +21,14 @@ ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
 
 # Get drivers and install
 RUN \
-  wget https://developer.nvidia.com/embedded/L4T/r32_Release_v4.3/t210ref_release_aarch64/Tegra210_Linux_R32.4.3_aarch64.tbz2  > /dev/null 2>&1 && \
-  tar xjf Tegra210_Linux_R32.4.3_aarch64.tbz2 && \
+  wget https://developer.nvidia.com/embedded/L4T/r32_Release_v4.3/t210ref_release_aarch64/Tegra210_Linux_R32.4.2_aarch64.tbz2  > /dev/null 2>&1 && \
+  tar xjf Tegra210_Linux_R32.4.2_aarch64.tbz2 && \
   tar xjf Linux_for_Tegra/nv_tegra/nvidia_drivers.tbz2 -C / && \
   tar xjf Linux_for_Tegra/nv_tegra/config.tbz2 -C / --exclude=etc/hosts --exclude=etc/hostname && \
   echo "/usr/lib/aarch64-linux-gnu/tegra" > /etc/ld.so.conf.d/nvidia-tegra.conf && \
   echo "/usr/local/cuda-10.0/targets/aarch64-linux/lib" > /etc/ld.so.conf.d/cuda-10-0.conf && \
   ldconfig && \
-  rm -f Tegra210_Linux_R32.4.3_aarch64.tbz2 && \
+  rm -f Tegra210_Linux_R32.4.2_aarch64.tbz2 && \
   rm -rf /usr/src/app/Linux_for_Tegra
 
 # install some OpenCV prerequesets
