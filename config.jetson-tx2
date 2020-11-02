@@ -1,8 +1,8 @@
 {
-  "OPENDATACAM_VERSION": "3.0.0",
+  "OPENDATACAM_VERSION": "3.0.1",
   "PATH_TO_YOLO_DARKNET" : "/darknet",
   "VIDEO_INPUT": "usbcam",
-  "NEURAL_NETWORK": "yolov2-voc",
+  "NEURAL_NETWORK": "yolov4",
   "VIDEO_INPUTS_PARAMS": {
     "file": "opendatacam_videos/demo.mp4",
     "usbcam": "v4l2src device=/dev/video0 ! video/x-raw, framerate=30/1, width=640, height=360 ! videoconvert ! appsink",
@@ -54,25 +54,10 @@
       "cfg": "cfg/yolov4-416x416.cfg",
       "weights": "yolov4.weights"
     },
-    "yolov3": {
+    "yolov4-tiny": {
       "data": "cfg/coco.data",
-      "cfg": "cfg/yolov3.cfg",
-      "weights": "yolov3.weights"
-    },
-    "yolov3-tiny-prn": {
-      "data": "cfg/coco.data",
-      "cfg": "cfg/yolov3-tiny-prn.cfg",
-      "weights": "yolov3-tiny-prn.weights"
-    },
-    "yolov3-tiny": {
-      "data": "cfg/coco.data",
-      "cfg": "cfg/yolov3-tiny.cfg",
-      "weights": "yolov3-tiny.weights"
-    },
-    "yolov2-voc": {
-      "data": "cfg/voc.data",
-      "cfg": "cfg/yolo-voc.cfg",
-      "weights": "yolo-voc.weights"
+      "cfg": "cfg/yolov4-tiny.cfg",
+      "weights": "yolov4-tiny.weights"
     }
   },
   "TRACKER_ACCURACY_DISPLAY": {
