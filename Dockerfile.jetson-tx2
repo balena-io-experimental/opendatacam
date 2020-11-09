@@ -75,7 +75,6 @@ RUN \
   npm run build
 
 EXPOSE 8080 8070 8090
-
 COPY config.jetson-tx2 config.bak
 
 COPY launch.sh launch.sh
