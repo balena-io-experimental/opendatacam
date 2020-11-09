@@ -20,7 +20,7 @@ fi
 # Create a symlink to persistent config.json
 ln -sf $CONFIG /var/local/opendatacam/config.json
 
-# Modify config.json based on config vars (requires use of jq JSON processor utility installed via Dockerfile)
+# Modify config.json based on config vars (requires jq JSON processor utility installed via Dockerfile)
 
 if [[ -z $VIDEO_INPUT ]]; then
   a=$(cat config.json | jq '.VIDEO_INPUT')
@@ -67,4 +67,3 @@ if [ $status -ne 0 ]; then
   echo "Failed to start npm run start: $status"
   exit $status
 fi
-
