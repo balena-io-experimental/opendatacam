@@ -10,7 +10,7 @@ assets:
 data:
   description: "OpenDataCam is an open source tool to quantify the world. It quantifies and tracks moving objects with live video analysis."
   applicationEnvironmentVariables:
-    - VIDEO_INPUT: usbcam
+    - VIDEO_INPUT: "usbcam"
     - INPUT_REMOTE_CAM: "YOUR IP CAM STREAM"
     - INPUT_USBCAM: "v4l2src device=/dev/video0 ! video/x-raw, framerate=30/1, width=640, height=360 ! videoconvert ! appsink"
   defaultDeviceType: 'jetson-nano'
