@@ -1,21 +1,24 @@
-version: "2"
-slug: "opendatacam"
 name: "OpenDataCam"
+description: "OpenDataCam is an open source tool to quantify the world. It quantifies and tracks moving objects with live video analysis."
 type: "sw.application"
 assets:
-  - url: "https://github.com/balenalabs-incubator/opendatacam"
-    name: "repository"
-  - url: "https://raw.githubusercontent.com/balenalabs-incubator/opendatacam/master/logo.png"
-    name: "logo"
+  repository:
+    type: "blob.asset"
+    data:
+      url: "https://github.com/balenalabs-incubator/opendatacam"
+  logo:
+    type: "blob.asset"
+    data:
+      url: "https://raw.githubusercontent.com/balenalabs-incubator/opendatacam/master/logo.png"
 data:
-  description: "OpenDataCam is an open source tool to quantify the world. It quantifies and tracks moving objects with live video analysis."
   applicationEnvironmentVariables:
     - VIDEO_INPUT: "usbcam"
     - INPUT_REMOTE_CAM: "YOUR IP CAM STREAM"
     - INPUT_USBCAM: "v4l2src device=/dev/video0 ! video/x-raw, framerate=30/1, width=640, height=360 ! videoconvert ! appsink"
-  defaultDeviceType: 'jetson-nano'
+  defaultDeviceType: "jetson-nano"
   supportedDeviceTypes:
     - "jetson-nano"
     - "jetson-nano-emmc"
+    - "jetson-nano-2gb-devkit"
     - "jetson-tx2"
     - "jetson-xavier"
