@@ -9,6 +9,9 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install some utils
 RUN apt-get update && apt-get install -y lbzip2 git wget unzip jq
 
+# Keep sources list at r32 for cuda 10 and cudnn 7
+RUN sed -i 's/r32.4 main/r32 main/g' /etc/apt/sources.list.d/nvidia.list && apt-get update
+
 # Install CUDA/cuDNN 
 RUN apt-get install -y cuda-toolkit-10-0 libcudnn7 libcudnn7-dev
 
