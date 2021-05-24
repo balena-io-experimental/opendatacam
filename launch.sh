@@ -54,6 +54,14 @@ else
   jq '.VIDEO_INPUTS_PARAMS.remote_cam = env.INPUT_REMOTE_CAM' $CONFIG > "tmp" && mv "tmp" $CONFIG
 fi
 
+if [ $INPUT_FILE = "raspberrycam" ]; then
+  cd /usr/lib/aarch64-linux-gnu 
+  ln -sf libdrm.so.2.4.0 libdrm.so.2
+  nvargus-daemon &
+  export LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libgomp.so.1
+  cd /var/local/opendatacam
+fi
+  
 # Change local URLs to container name
 sed -i "s;parsedUrl\[0\];'opendatacam';" server/utils/urlHelper.js
 
