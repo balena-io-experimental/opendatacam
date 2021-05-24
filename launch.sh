@@ -54,14 +54,6 @@ else
   jq '.VIDEO_INPUTS_PARAMS.remote_cam = env.INPUT_REMOTE_CAM' $CONFIG > "tmp" && mv "tmp" $CONFIG
 fi
 
-if [[ -z $INPUT_RASPBERRY_CAM ]]; then
-  a=$(cat config.json | jq '.VIDEO_INPUTS_PARAMS.raspberry_cam')
-  echo 'Using video input raspberry_cam value from config.json: '$a
-else
-  echo 'Updating config.json video input raspberry_cam value from dashboard device variable: '$INPUT_RASPBERRY_CAM
-  jq '.VIDEO_INPUTS_PARAMS.raspberry_cam = env.INPUT_RASPBERRY_CAM' $CONFIG > "tmp" && mv "tmp" $CONFIG
-fi
-
 # Change local URLs to container name
 sed -i "s;parsedUrl\[0\];'opendatacam';" server/utils/urlHelper.js
 
