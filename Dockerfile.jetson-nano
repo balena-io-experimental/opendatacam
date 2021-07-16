@@ -40,7 +40,7 @@ RUN apt-get update && apt-get install -y wget tar lbzip2 python3 libegl1 && \
 # install some OpenCV prerequesets
 RUN \
   apt-get install -y libgtk2.0-dev libavcodec-dev libavformat-dev libswscale-dev libwebp-dev libtbb2 libtbb-dev libgstreamer1.0-0 \
-  gstreamer1.0-plugins-base gstreamer1.0-plugins-good cmake pkg-config
+  gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad cmake pkg-config
 
 # Copy/expand prebuilt OpenCV 4.1.1
 COPY opencv411_include.tar.gz .
@@ -66,7 +66,7 @@ RUN wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_p
 # Download and install OpenDataCam
 # first install node.js
 RUN \
-  curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
+  curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
   apt-get install -y nodejs
 
 RUN \
