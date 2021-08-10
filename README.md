@@ -10,7 +10,7 @@ A detailed tutorial is available [here](https://www.balena.io/blog/using-opendat
 
 You can use the deploy button below to create and build the application in your [balenaCloud](https://www.balena.io/cloud/) account. (balenaCloud allows you to remotely monitor, update and manage your device. You can add your first 10 devices for free!)
 
-[![](https://www.balena.io/deploy.png)](https://dashboard.balena-cloud.com/deploy)
+[![](https://www.balena.io/deploy.png)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/balenalabs-incubator/opendatacam)
 
 Be sure to select "Nvidia Jetson Nano" (or another Jetson device) as the device type. click "add device" to download the image and burn it to an SD card using [Etcher](https://www.balena.io/etcher/). Alternatively, you can use the balena CLI to push this code to your application.
 
