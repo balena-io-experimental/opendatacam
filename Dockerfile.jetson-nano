@@ -1,4 +1,4 @@
-FROM balenalib/jetson-nano-ubuntu:bionic
+FROM balenalib/jetson-nano-ubuntu:bionic-run-20201118
 
 WORKDIR /usr/src/app
 
