@@ -1,6 +1,9 @@
 # OpenDataCam
 An implementation of [OpenDataCam 3.0.1](https://github.com/opendatacam/opendatacam) that is fully containerized and runs on balena + Jetson Nano/TX2/Xavier. 
 
+## Updated October 20, 2021:
+The repo has been updated to OpenDataCam 3.0.2 along with updates to run faster on a TX2.
+
 ## Updated November 9, 2020:
 This repo has been updated from OpenDataCam 3.0.0 to the latest version, 3.0.1 which adds support for yolov4-tiny and makes it the default weights for the Jetson Nano. In addition, this version uses one of our standard balena Jetson base images that now include Nvidia APT sources that provide all necessary JetPack components (CUDA, cuDNN, etc...) so you do not need to download the Nvidia SDK Manager or install the JetPack.
 
