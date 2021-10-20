@@ -2,7 +2,7 @@ FROM balenalib/jetson-nano-ubuntu:bionic-run-20201118
 
 WORKDIR /usr/src/app
 
-#OpenDataCam 3.0.1
+#OpenDataCam 3.0.2
 
 ENV DEBIAN_FRONTEND noninteractive
   

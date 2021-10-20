@@ -1,5 +1,5 @@
 {
-  "OPENDATACAM_VERSION": "3.0.1",
+  "OPENDATACAM_VERSION": "3.0.2",
   "PATH_TO_YOLO_DARKNET" : "/darknet",
   "VIDEO_INPUT": "usbcam",
   "NEURAL_NETWORK": "yolov4",

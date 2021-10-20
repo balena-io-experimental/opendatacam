@@ -1,8 +1,8 @@
-FROM balenalib/jetson-xavier-ubuntu:bionic
+FROM balenalib/jetson-xavier-ubuntu:bionic-run-20201211
 
 WORKDIR /usr/src/app
 
-#OpenDataCam 3.0.1
+#OpenDataCam 3.0.2
 
 ENV DEBIAN_FRONTEND noninteractive
   

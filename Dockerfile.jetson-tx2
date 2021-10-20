@@ -1,8 +1,8 @@
-FROM balenalib/jetson-tx2-ubuntu:bionic
+FROM balenalib/jetson-tx2-ubuntu:bionic-run-20201110
 
 WORKDIR /usr/src/app
 
-#OpenDataCam 3.0.1
+#OpenDataCam 3.0.2
 
 ENV DEBIAN_FRONTEND noninteractive
   
@@ -60,7 +60,7 @@ COPY ./Makefile.jetson-tx2 ./Makefile
 RUN make && ldconfig
 
 #get weights
-RUN wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_pre/yolov4.weights --no-check-certificate > /dev/null 2>&1
+RUN wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_pre/yolov4-tiny.weights --no-check-certificate > /dev/null 2>&1
 
 # Download and install OpenDataCam
 #  first install node.js
