@@ -2,10 +2,11 @@ version: '2'
 volumes:
     db-data:
     config-data:
+    ei-data:
 services:
   opendatacam:
     restart: always
-    build: .
+    build: ./opendatacam
     privileged: true
     volumes:
       - 'db-data:/data/db'
@@ -21,3 +22,18 @@ services:
       - "27017:27017"
     volumes:
       - 'db-data:/data/db'
+  audio:
+    image: balenablocks/audio
+    privileged: true
+    ports:
+      - 4317:4317
+  ei:
+    restart: always
+    build: ./ei
+    privileged: true
+    ports:
+      - "80:80"
+    environment:
+      PULSE_SERVER: tcp:audio:4317
+    volumes:
+      - 'ei-data:/data/ei'

@@ -1,0 +1,24 @@
+FROM balenalib/%%BALENA_MACHINE_NAME%%-ubuntu:focal
+
+ENV DEBIAN_FRONTEND noninteractive
+
+# Installing tzdata below so it does not prompt for input later
+RUN apt-get update && apt-get install -y wget xz-utils tzdata python3 python3-pip
+
+# Required by the EI CLI  
+RUN apt install -y gstreamer1.0-tools gstreamer1.0-plugins-good gstreamer1.0-plugins-base gstreamer1.0-plugins-base-apps
+
+RUN pip3 install requests
+
+WORKDIR /usr/src/app
+
+# Below file runs modified version of
+# wget -q -O - https://cdn.edgeimpulse.com/firmware/linux/jetson.sh | bash 
+COPY jetson.sh .
+RUN chmod +x jetson.sh && ./jetson.sh
+
+COPY *.py ./
+
+ENV UDEV=on
+
+CMD ["sleep","infinity"]
