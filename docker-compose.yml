@@ -21,8 +21,4 @@ services:
       - "27017:27017"
     volumes:
       - 'db-data:/data/db'
-  audio:
-    image: balenablocks/audio
-    privileged: true
-    ports:
-      - 4317:4317
+
