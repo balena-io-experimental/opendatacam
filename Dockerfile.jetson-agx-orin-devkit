@@ -1,0 +1,91 @@
+FROM balenalib/jetson-agx-orin-devkit-ubuntu:focal-run-20221215
+
+WORKDIR /usr/src/app
+
+#OpenDataCam 3.0.2
+
+ENV DEBIAN_FRONTEND noninteractive
+
+# Install CUDA, CUDA compiler and some utilities
+RUN \
+    apt-get update && apt-get install -y nvidia-l4t-cuda nvidia-cuda \
+    nvidia-cuda-dev libcudnn8 libcudnn8-dev \
+    lbzip2 git wget unzip jq \
+    cmake build-essential wget unzip \
+    libgtk2.0-dev libavcodec-dev libavformat-dev libswscale-dev \
+    libwebp-dev libtbb2 libtbb-dev \
+    libgstreamer1.0-dev \
+    libgstreamer-plugins-base1.0-dev \
+    gstreamer1.0-plugins-good \
+    libjpeg-dev \
+    libpng-dev \
+    libtiff-dev \
+    libdc1394-22-dev -y --no-install-recommends && \
+    echo "/usr/lib/aarch64-linux-gnu/tegra" > /etc/ld.so.conf.d/nvidia-tegra.conf && \
+    ldconfig && \
+    wget https://github.com/opencv/opencv/archive/4.5.1.zip && \
+    unzip 4.5.1.zip && rm 4.5.1.zip
+
+# Set paths
+ENV CUDA_HOME=/usr/local/cuda-11.4
+ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${CUDA_HOME}/lib64
+ENV PATH=${CUDA_HOME}/bin:${PATH}
+ENV PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+
+RUN \
+    wget https://github.com/opencv/opencv_contrib/archive/4.5.1.zip -O opencv_modules.4.5.1.zip && \
+    unzip opencv_modules.4.5.1.zip && rm opencv_modules.4.5.1.zip && \
+    export CUDA_HOME=/usr/local/cuda-10.2/ && \
+    export LD_LIBRARY_PATH=${CUDA_HOME}/lib64 && \
+    PATH=${CUDA_HOME}/bin:${PATH} && export PATH && \
+    mkdir -p opencv-4.5.1/build && cd opencv-4.5.1/build && \
+    cmake -D WITH_CUDA=ON -D CUDA_ARCH_BIN="5.3"  -D BUILD_LIST=cudev,highgui,videoio,cudaimgproc,ximgproc -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-4.5.1/modules -D CUDA_ARCH_PTX="" -D WITH_GSTREAMER=ON -D WITH_LIBV4L=ON -D BUILD_TESTS=ON -D BUILD_PERF_TESTS=ON -D BUILD_SAMPLES=ON -D BUILD_EXAMPLES=ON -D CMAKE_BUILD_TYPE=RELEASE -D WITH_GTK=on -D BUILD_DOCS=OFF -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_GENERATE_PKGCONFIG=YES .. && make -j32 && make install && \
+    cp /usr/src/app/opencv-4.5.1/build/bin/opencv_version /usr/src/app/ && \
+    cp /usr/src/app/opencv-4.5.1/build/bin/example_ximgproc_paillou_demo /usr/src/app/ && \
+    cp /usr/src/app/opencv-4.5.1/build/bin/example_ximgproc_fourier_descriptors_demo /usr/src/app/ && \
+    cd /usr/src/app/ && rm -rf /usr/src/app/opencv-4.5.1 && \
+    mv opencv_contrib-4.5.1/samples/data/corridor.jpg /usr/src/app/ && \
+    rm -rf /usr/src/app/opencv_contrib-4.5.1
+
+# Copy cuDNN files for Darkent
+#RUN \
+#  cp /usr/include/cudnn.h /usr/local/cuda-11.4/include && \
+# cp -P /usr/lib/aarch64-linux-gnu/libcudnn* /usr/local/cuda-11.4/lib64
+  
+WORKDIR /
+
+# Download and build Darknet
+RUN \
+  git clone https://github.com/AlexeyAB/darknet.git
+
+WORKDIR /darknet
+
+COPY ./Makefile.jetson-agx-orin-devkit ./Makefile
+
+RUN make && ldconfig
+
+# get weights
+RUN wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_pre/yolov4-tiny.weights --no-check-certificate > /dev/null 2>&1
+
+# Download and install OpenDataCam
+#  first install node.js
+RUN \
+  curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash - && \
+  apt-get install -y nodejs
+
+RUN \
+  git clone --depth 1 https://github.com/opendatacam/opendatacam.git  /var/local/opendatacam
+
+WORKDIR /var/local/opendatacam
+
+RUN \
+  npm install && \
+  npm run build
+
+EXPOSE 8080 8070 8090
+COPY config.jetson-agx-orin-devkit config.bak
+
+COPY launch.sh launch.sh
+RUN chmod 777 launch.sh
+CMD ["./launch.sh"]
+#CMD ["sleep", "infinity"]
