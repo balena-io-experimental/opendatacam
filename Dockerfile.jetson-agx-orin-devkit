@@ -40,17 +40,7 @@ RUN \
     PATH=${CUDA_HOME}/bin:${PATH} && export PATH && \
     mkdir -p opencv-4.5.1/build && cd opencv-4.5.1/build && \
     cmake -D WITH_CUDA=ON -D CUDA_ARCH_BIN="5.3"  -D BUILD_LIST=cudev,highgui,videoio,cudaimgproc,ximgproc -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-4.5.1/modules -D CUDA_ARCH_PTX="" -D WITH_GSTREAMER=ON -D WITH_LIBV4L=ON -D BUILD_TESTS=ON -D BUILD_PERF_TESTS=ON -D BUILD_SAMPLES=ON -D BUILD_EXAMPLES=ON -D CMAKE_BUILD_TYPE=RELEASE -D WITH_GTK=on -D BUILD_DOCS=OFF -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_GENERATE_PKGCONFIG=YES .. && make -j32 && make install && \
-    cp /usr/src/app/opencv-4.5.1/build/bin/opencv_version /usr/src/app/ && \
-    cp /usr/src/app/opencv-4.5.1/build/bin/example_ximgproc_paillou_demo /usr/src/app/ && \
-    cp /usr/src/app/opencv-4.5.1/build/bin/example_ximgproc_fourier_descriptors_demo /usr/src/app/ && \
-    cd /usr/src/app/ && rm -rf /usr/src/app/opencv-4.5.1 && \
-    mv opencv_contrib-4.5.1/samples/data/corridor.jpg /usr/src/app/ && \
     rm -rf /usr/src/app/opencv_contrib-4.5.1
-
-# Copy cuDNN files for Darkent
-#RUN \
-#  cp /usr/include/cudnn.h /usr/local/cuda-11.4/include && \
-# cp -P /usr/lib/aarch64-linux-gnu/libcudnn* /usr/local/cuda-11.4/lib64
   
 WORKDIR /
 
@@ -64,8 +54,11 @@ COPY ./Makefile.jetson-agx-orin-devkit ./Makefile
 
 RUN make && ldconfig
 
-# get weights
-RUN wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_pre/yolov4-tiny.weights --no-check-certificate > /dev/null 2>&1
+# get weights and cfg for yolov4/yolov4-tiny
+RUN wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v4_pre/yolov4-tiny.weights --no-check-certificate > /dev/null 2>&1 && \
+    wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.weights --no-check-certificate > /dev/null 2>&1
+    
+COPY ./yolov4-416x416.cfg /darknet/cfg/yolov4-416x416.cfg
 
 # Download and install OpenDataCam
 #  first install node.js
@@ -88,4 +81,3 @@ COPY config.jetson-agx-orin-devkit config.bak
 COPY launch.sh launch.sh
 RUN chmod 777 launch.sh
 CMD ["./launch.sh"]
-#CMD ["sleep", "infinity"]
