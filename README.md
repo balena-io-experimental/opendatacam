@@ -16,9 +16,9 @@ Once the build is complete and the image has downloaded to your device, you can 
 
 ## Configuring OpenDataCam
 
-Opendatacam is configured via the /var/local/opendatacam/config.json file. It is a symlink to /data/odc/config.json which is located on a persistent volume. Any changes to the file will be saved even if the container restarts. You can see all of the customizations available on [this page](https://github.com/opendatacam/opendatacam/blob/master/documentation/CONFIG.md).
+Opendatacam is configured via the `/var/local/opendatacam/config.json` file. It is a symlink to `/data/odc/config.json` which is located on a persistent volume. Any changes to the file will be saved even if the container restarts. You can see all of the customizations available on [this page](https://github.com/opendatacam/opendatacam/blob/master/documentation/CONFIG.md).
 
-We've exposed the most popular variables as [device varibales](https://www.balena.io/docs/learn/manage/variables/) which you can set on the balenaCloud dashboard for one device or a whole fleet at once. Setting these variables will modify your OpenDataCam config.json file. 
+We've exposed the most popular variables as [device variables](https://www.balena.io/docs/learn/manage/variables/) which you can set on the balenaCloud dashboard for one device or a whole fleet at once. Setting these variables will modify your OpenDataCam config.json file. 
 
 
 **VIDEO_INPUT** - set to `usbcam` for an attached USB camera (default value) or `remote_cam` for an IP camera. If you set to `remote_cam` you need to also set the variable `INPUT_REMOTE_CAM`. The value `file` is also valid, in which case you also need to set the variable `VIDEO_FILE`. (Note that this setup currently does not support `raspberrycam`.)
