@@ -1,11 +1,5 @@
 # OpenDataCam
-An implementation of [OpenDataCam 3.0.1](https://github.com/opendatacam/opendatacam) that is fully containerized and runs on balena + Jetson Nano/TX2/Xavier. 
-
-## Updated October 20, 2021:
-The repo has been updated to OpenDataCam 3.0.2 along with updates to run faster on a TX2.
-
-## Updated November 9, 2020:
-This repo has been updated from OpenDataCam 3.0.0 to the latest version, 3.0.1 which adds support for yolov4-tiny and makes it the default weights for the Jetson Nano. In addition, this version uses one of our standard balena Jetson base images that now include Nvidia APT sources that provide all necessary JetPack components (CUDA, cuDNN, etc...) so you do not need to download the Nvidia SDK Manager or install the JetPack.
+An implementation of [OpenDataCam 3.0.2](https://github.com/opendatacam/opendatacam) that is fully containerized and can be deployed in one click on the balena platform. Supports Jetson Nano, TX2, AGX Xavier, and AGX Orin.
 
 A detailed tutorial is available [here](https://www.balena.io/blog/using-opendatacam-and-balena-to-quantify-the-world-with-ai/).
 
@@ -15,16 +9,16 @@ You can use the deploy button below to create and build the application in your 
 
 [![](https://www.balena.io/deploy.png)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/balenalabs-incubator/opendatacam)
 
-Be sure to select "Nvidia Jetson Nano" (or another Jetson device) as the device type. click "add device" to download the image and burn it to an SD card using [Etcher](https://www.balena.io/etcher/). Alternatively, you can use the balena CLI to push this code to your application.
+Be sure to select your NVIDIA Jetson device type as the default device type. click "add device" to download the image and follow the directions to flash your Jetson board. Alternatively, you can use the balena CLI to push this code to your application.
 
-Once the build is complete and the image has downloaded to your device, you can access OpenDataCam from your browser using the IP of your Nano. For instance: http://192.168.1.67:8080 (The web interface is on port 8080)
+Once the build is complete and the image has downloaded to your device, you can access OpenDataCam from your browser using the IP of your device. For instance: http://192.168.1.67:8080 (The web interface is on port 8080)
 
 
 ## Configuring OpenDataCam
 
 Opendatacam is configured via the /var/local/opendatacam/config.json file. It is a symlink to /data/odc/config.json which is located on a persistent volume. Any changes to the file will be saved even if the container restarts. You can see all of the customizations available on [this page](https://github.com/opendatacam/opendatacam/blob/master/documentation/CONFIG.md).
 
-You can set the device variables below in the balenaCloud dashboard which will modify your OpenDataCam config.json file. 
+We've exposed the most popular variables as [device varibales](https://www.balena.io/docs/learn/manage/variables/) which you can set on the balenaCloud dashboard for one device or a whole fleet at once. Setting these variables will modify your OpenDataCam config.json file. 
 
 
 **VIDEO_INPUT** - set to `usbcam` for an attached USB camera (default value) or `remote_cam` for an IP camera. If you set to `remote_cam` you need to also set the variable `INPUT_REMOTE_CAM`. The value `file` is also valid, in which case you also need to set the variable `VIDEO_FILE`. (Note that this setup currently does not support `raspberrycam`.)
