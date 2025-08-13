@@ -1,7 +1,7 @@
 # OpenDataCam
-An implementation of [OpenDataCam 3.0.2](https://github.com/opendatacam/opendatacam) that is fully containerized and can be deployed in one click on the balena platform. Supports Jetson Nano, TX2, AGX Xavier, and AGX Orin.
+An implementation of [OpenDataCam 3.0.2](https://github.com/opendatacam/opendatacam) that is fully containerized and can be deployed in one click on the balena platform. Supports Jetson Orin devices including: AGX Orin, Orin Nano, and Orin NX.
 
-A detailed tutorial is available [here](https://www.balena.io/blog/using-opendatacam-and-balena-to-quantify-the-world-with-ai/).
+A detailed tutorial is available [here](https://www.balena.io/blog/using-opendatacam-and-balena-to-quantify-the-world-with-ai/). (Note that the tutorial mentions Jetson boards that are no longer supported by this project, namely the original 2019 Jetson Nano.)
 
 ## Getting Started
 
