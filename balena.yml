@@ -15,11 +15,11 @@ data:
     - VIDEO_INPUT: "usbcam"
     - INPUT_REMOTE_CAM: "YOUR IP CAM STREAM"
     - INPUT_USBCAM: "v4l2src device=/dev/video0 ! video/x-raw, framerate=30/1, width=640, height=360 ! videoconvert ! appsink"
-  defaultDeviceType: "jetson-nano"
+  defaultDeviceType: "jetson-agx-orin-devkit-64gb"
   supportedDeviceTypes:
-    - "jetson-nano"
-    - "jetson-nano-emmc"
-    - "jetson-nano-2gb-devkit"
-    - "jetson-tx2"
-    - "jetson-xavier"
+    - "jetson-orin-nano-devkit-nvme"
+    - "jetson-agx-orin-devkit-64gb"
+    - "jetson-orin-nx-xavier-nx-devkit"
+    - "jetson-orin-nano-seeed-j3010"
+    - "jetson-orin-nx-seeed-j4012"
     

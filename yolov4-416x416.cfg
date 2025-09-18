@@ -1155,4 +1155,3 @@ iou_loss=ciou
 nms_kind=greedynms
 beta_nms=0.6
 max_delta=5
-

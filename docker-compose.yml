@@ -5,7 +5,7 @@ volumes:
 services:
   opendatacam:
     restart: always
-    build: ./
+    build: .
     privileged: true
     volumes:
       - 'db-data:/data/db'
@@ -15,10 +15,9 @@ services:
       - "8070:8070"
       - "8090:8090"
   mongo:
-    image: mongo:4.2.14
+    image: mongo:4.4.8
     restart: always
     ports:
       - "27017:27017"
     volumes:
       - 'db-data:/data/db'
-
