@@ -5,11 +5,11 @@ assets:
   repository:
     type: "blob.asset"
     data:
-      url: "https://github.com/balenalabs-incubator/opendatacam"
+      url: "https://github.com/balena-io-experimental/opendatacam"
   logo:
     type: "blob.asset"
     data:
-      url: "https://raw.githubusercontent.com/balenalabs-incubator/opendatacam/master/logo.png"
+      url: "https://raw.githubusercontent.com/balena-io-experimental/opendatacam/master/logo.png"
 data:
   applicationEnvironmentVariables:
     - VIDEO_INPUT: "usbcam"

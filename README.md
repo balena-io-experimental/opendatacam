@@ -7,7 +7,7 @@ A detailed tutorial is available [here](https://www.balena.io/blog/using-opendat
 
 You can use the deploy button below to create and build the application in your [balenaCloud](https://www.balena.io/cloud/) account. (balenaCloud allows you to remotely monitor, update and manage a fleet of one or more devices. You can add your first 10 devices for free!)
 
-[![](https://www.balena.io/deploy.png)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/balenalabs-incubator/opendatacam)
+[![](https://www.balena.io/deploy.png)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/balena-io-experimental/opendatacam)
 
 Be sure to select your NVIDIA Jetson device type as the default device type. click "add device" to download the image and follow the directions to flash your Jetson board. Alternatively, you can use the balena CLI to push this code to your application.
 
