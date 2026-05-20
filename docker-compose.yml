@@ -21,3 +21,19 @@ services:
       - "27017:27017"
     volumes:
       - 'db-data:/data/db'
+  browser:
+    build: ./browser
+    privileged: true # required for UDEV to find plugged in peripherals such as a USB mouse
+    ipc: host
+    ports:
+        - '5011' # management API (optional)
+        - '35173' # Chromium debugging port (optional)
+    environment:
+      - UDEV=1
+      - DISPLAY=:0
+      # Tells Chromium to ignore standard GPU sandbox limitations inherent to Docker
+      - EXTRA_FLAGS=--ignore-gpu-blocklist --enable-gpu-rasterization
+    # Ensures the container interacts natively with host graphic drivers
+    labels:
+      io.balena.features.kernel-modules: '1'
+      io.balena.features.dbus: '1'
